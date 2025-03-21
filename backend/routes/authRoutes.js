@@ -30,9 +30,9 @@ router.post("/sign-up", async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
-    console.log(existingUser, "existingUser");
 
     const hachPassword = await bcrypt.hash(password, 10);
+
     const newUser = new user({
       userName,
       email,
@@ -78,10 +78,10 @@ router.post("/sign-in", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials" });
     } else {
-      const token = jwt.sign({ authClaims }, process.env.secKEY, {
+      const token = jwt.sign({ authClaims }, process.env.SEC_KEY, {
         expiresIn: "2d",
       });
-      return res.status(200).json({ ...existingUser, token: token });
+      return res.status(200).json({ ...existingUser._doc, token: token });
     }
   } catch (err) {
     return res.status(500).json({ message: `Server Error || ${err.message}` });
