@@ -11,8 +11,8 @@ export const apiRequest = async <T>(
   method: "GET" | "POST" | "PUT" | "DELETE",
   url: string,
   data?: unknown,
-  config?: AxiosRequestConfig,
-  useAuth: boolean = false // If true, require auth token
+  useAuth: boolean = false, // If true, require auth token
+  config?: AxiosRequestConfig
 ): Promise<ApiResponse<T>> => {
   try {
     const headers = { ...config?.headers };
@@ -39,7 +39,7 @@ export const apiRequest = async <T>(
   } catch (error: any) {
     return {
       success: false,
-      error: error.response?.data?.message || "Something went wrong",
+      error: error || "Something went wrong",
     };
   }
 };

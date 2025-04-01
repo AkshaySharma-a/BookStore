@@ -6,13 +6,12 @@ export const loginUser = async (email: string, password: string) => {
     "POST",
     "/sign-in", // Use the correct login endpoint
     { email, password },
-    {},
-    false
+    false,
+    {}
   );
-console.log("working===========",response)
   if (response.success && response.data) {
     localStorage.setItem("token", response.data.token); // Store token in localStorage
-    console.log(response,"[[[[[[[[[[[[[[[")
+    console.log(response)
   } else {
     throw new Error(response.error || "Login failed"); // Handle errors properly
   }
