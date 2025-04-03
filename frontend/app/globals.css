@@ -9,6 +9,7 @@
 
 
 .bg-pattern {
+  color: aliceblue;
   background-color: rgb(13, 13, 13);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 10 20'%3E%3Cpath d='M0 20 L20 0 L40 20 L20 40 Z' stroke='white' stroke-width='.5' fill='none'/%3E%3C/svg%3E");
   background-size: 15px 15px;

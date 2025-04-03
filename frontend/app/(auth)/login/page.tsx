@@ -3,6 +3,7 @@
 import CommonCard from "@/app/components/common/commonCard";
 import Inputfield from "@/app/components/common/formfields/inputFields";
 import ProfilePic from "@/app/components/common/profilPic";
+import { ToastContainer, toast } from "react-toastify";
 import { loginUser } from "@/app/services/authService";
 import { useState } from "react";
 
@@ -21,13 +22,16 @@ export default function Login() {
         initialValue.password
       );
       console.log("Login successful:", response);
+      toast("Login successfully!");
     } catch (error: any) {
       console.error("Login failed:", error.message);
+      toast("Login failed:");
     }
   };
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
+      <ToastContainer position="bottom-center" />
       <CommonCard extraClass="">
         <div className="flex flex-col items-center space-y-4">
           <ProfilePic src="" alt="User 3" size={155} isLoading={false} />

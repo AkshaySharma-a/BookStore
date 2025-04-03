@@ -10,9 +10,11 @@ export const loginUser = async (email: string, password: string) => {
     {}
   );
   if (response.success && response.data) {
+    localStorage.setItem("isLogin", "true")
     localStorage.setItem("token", response.data.token); // Store token in localStorage
     console.log(response)
   } else {
+    localStorage.setItem("isLogin", "false")
     throw new Error(response.error || "Login failed"); // Handle errors properly
   }
 

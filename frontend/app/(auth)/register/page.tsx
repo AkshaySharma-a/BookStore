@@ -5,7 +5,7 @@ import Inputfield from "@/app/components/common/formfields/inputFields";
 import ProfilePic from "@/app/components/common/profilPic";
 import { apiRequest } from "@/app/lib/apiHelper";
 import { useEffect, useState } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
 export default function Register() {
   const [initialValue, setInitialValue] = useState({
     email: "",
@@ -29,17 +29,21 @@ export default function Register() {
       );
 
       if (response.success && response.data) {
-        setModalMessage("User created successfully!");
+        // setModalMessage("User created successfully!");
+        toast("User created successfully!");
       } else {
-        setModalMessage(
-          response.error.response.data.message || "User already exists!"
-        );
+        // setModalMessage(
+        //   response.error.response.data.message || "User already exists!"
+        toast(response.error.response.data.message || "User already exists!");
+
+        // );
       }
 
       setIsModalOpen(true); // Open modal
     } catch (error) {
       console.error("API Error:", error);
-      setModalMessage("Something went wrong. Please try again.");
+      // setModalMessage("Sarver Error. Please try again.");
+      toast("Sarver Error. Please try again.");
       setIsModalOpen(true);
     }
   };
@@ -53,6 +57,7 @@ export default function Register() {
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
+      <ToastContainer position="bottom-center" />
       <CommonCard extraClass="">
         <div className="flex flex-col items-center space-y-4">
           <ProfilePic src="" alt="User 3" size={155} isLoading={false} />
