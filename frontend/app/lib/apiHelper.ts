@@ -14,9 +14,10 @@ export const apiRequest = async <T>(
   useAuth: boolean = false, // If true, require auth token
   config?: AxiosRequestConfig
 ): Promise<ApiResponse<T>> => {
+  
   try {
     const headers = { ...config?.headers };
-
+    
     // 🔹 Only add token when useAuth is true
     if (useAuth && typeof window !== "undefined") {
       const token = localStorage.getItem("token");
@@ -26,7 +27,7 @@ export const apiRequest = async <T>(
       }
       headers.Authorization = `Bearer ${token}`;
     }
-
+    
     const response = await api.request<T>({
       method,
       url,
@@ -34,12 +35,13 @@ export const apiRequest = async <T>(
       ...config,
       headers, // ✅ Pass modified headers
     });
-
+    
+    console.log("iam working in api")
     return { success: true, data: response.data };
   } catch (error: any) {
     return {
       success: false,
-      error: error || "Something went wrong",
+      error: error.response.data.message || "Something went wrong",
     };
   }
 };

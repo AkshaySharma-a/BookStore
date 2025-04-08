@@ -9,7 +9,7 @@ export default function CommonHeader({ logoHref = "#" }: CommonHeaderProps) {
   const islogin = false;
   return (
     <>
-      <div className="bg-linear-to-bl from-violet-500 to-fuchsia-500">
+      <div className="bg-linear-to-bl from-gray-900 to-blue-100">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12"></div>

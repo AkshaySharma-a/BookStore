@@ -6,26 +6,25 @@ import ProfilePic from "@/app/components/common/profilPic";
 import { ToastContainer, toast } from "react-toastify";
 import { loginUser } from "@/app/services/authService";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [initialValue, setInitialValue] = useState({
     email: "",
     password: "",
   });
-  console.log(initialValue);
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const router = useRouter();
 
-    try {
-      const response = await loginUser(
-        initialValue.email,
-        initialValue.password
-      );
-      console.log("Login successful:", response);
-      toast("Login successfully!");
-    } catch (error: any) {
-      console.error("Login failed:", error.message);
-      toast("Login failed:");
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+    const response = await loginUser(initialValue.email, initialValue.password);
+    if (response.success && response.data) {
+      console.log("Login successful:");
+      toast.success("Login successful!");
+      router.push("/dashboard");
+    } else {
+      localStorage.setItem("isLogin", "false");
+      toast.error(response?.error);
     }
   };
 

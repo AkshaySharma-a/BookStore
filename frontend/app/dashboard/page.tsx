@@ -143,7 +143,7 @@ export default function dashboard() {
   ];
 
   return (
-    <div className="flex  flex-wrap gap-6 p-6">
+    <div className="flex  flex-wrap gap-2 p-1">
       {bookdata.map((data: any) => {
         return (
           <BookCard

@@ -29,14 +29,10 @@ export default function Register() {
       );
 
       if (response.success && response.data) {
-        // setModalMessage("User created successfully!");
         toast("User created successfully!");
       } else {
-        // setModalMessage(
-        //   response.error.response.data.message || "User already exists!"
-        toast(response.error.response.data.message || "User already exists!");
-
-        // );
+        console.log(response);
+        toast(response.error || "Please try Agane leater !");
       }
 
       setIsModalOpen(true); // Open modal
