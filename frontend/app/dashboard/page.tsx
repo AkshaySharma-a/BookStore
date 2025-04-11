@@ -1,6 +1,4 @@
 "use client";
-
-import { useState } from "react";
 import BookCard from "../components/common/BookCard/BookCard";
 
 export default function dashboard() {
@@ -14,42 +12,6 @@ export default function dashboard() {
       price: "12.99",
       description:
         "The timeless Hindu scripture on duty, devotion, and spirituality.",
-    },
-    {
-      id: 6,
-      image: "https://m.media-amazon.com/images/I/71jG+e7roXL._SL1500_.jpg",
-      title: "The Alchemist",
-      author: "Paulo Coelho",
-      price: "10.99",
-      description:
-        "A magical story about following one's dreams and self-discovery.",
-    },
-    {
-      id: 7,
-      image: "https://m.media-amazon.com/images/I/71QKQ9mwV7L._SL1500_.jpg",
-      title: "Ikigai",
-      author: "Héctor García, Francesc Miralles",
-      price: "15.99",
-      description:
-        "A Japanese philosophy for finding purpose and happiness in life.",
-    },
-    {
-      id: 8,
-      image: "https://m.media-amazon.com/images/I/81FsPkaeK+L._SL1500_.jpg",
-      title: "Sapiens: A Brief History of Humankind",
-      author: "Yuval Noah Harari",
-      price: "16.99",
-      description:
-        "An exploration of human history from evolution to modern society.",
-    },
-    {
-      id: 2,
-      image: "https://m.media-amazon.com/images/I/71t4GuxLCuL._SL1500_.jpg",
-      title: "Rich Dad Poor Dad",
-      author: "Robert Kiyosaki",
-      price: "9.99",
-      description:
-        "A financial classic about wealth building and financial education.",
     },
     {
       id: 3,
@@ -96,24 +58,6 @@ export default function dashboard() {
         "A Japanese philosophy for finding purpose and happiness in life.",
     },
     {
-      id: 8,
-      image: "https://m.media-amazon.com/images/I/81FsPkaeK+L._SL1500_.jpg",
-      title: "Sapiens: A Brief History of Humankind",
-      author: "Yuval Noah Harari",
-      price: "16.99",
-      description:
-        "An exploration of human history from evolution to modern society.",
-    },
-    {
-      id: 8,
-      image: "https://m.media-amazon.com/images/I/81FsPkaeK+L._SL1500_.jpg",
-      title: "Sapiens: A Brief History of Humankind",
-      author: "Yuval Noah Harari",
-      price: "16.99",
-      description:
-        "An exploration of human history from evolution to modern society.",
-    },
-    {
       id: 2,
       image: "https://m.media-amazon.com/images/I/71t4GuxLCuL._SL1500_.jpg",
       title: "Rich Dad Poor Dad",
@@ -130,15 +74,6 @@ export default function dashboard() {
       price: "16.99",
       description:
         "An exploration of human history from evolution to modern society.",
-    },
-    {
-      id: 2,
-      image: "https://m.media-amazon.com/images/I/71t4GuxLCuL._SL1500_.jpg",
-      title: "Rich Dad Poor Dad",
-      author: "Robert Kiyosaki",
-      price: "9.99",
-      description:
-        "A financial classic about wealth building and financial education.",
     },
   ];
 
@@ -147,6 +82,7 @@ export default function dashboard() {
       {bookdata.map((data: any) => {
         return (
           <BookCard
+            key={`${data.id}-${data.title}`}
             id={data.id}
             image={data.image}
             title={data.title}
