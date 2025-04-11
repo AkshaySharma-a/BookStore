@@ -1,8 +1,9 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface BookProps {
+  id: number;
   image: string;
   title: string;
   author: string;
@@ -11,6 +12,7 @@ interface BookProps {
 }
 
 export default function BookCard({
+  id,
   image,
   title,
   author,
@@ -19,11 +21,22 @@ export default function BookCard({
 }: BookProps) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const router = useRouter();
+
+  const handleBuy = () => {
+    router.push(`/checkout/${id}`);
+  };
+
+  const handleViewDetails = () => {
+    router.push(`/books/${id}`);
+  };
+
   return (
     <div
       className="relative w-64 h-96 m-4 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleViewDetails}
     >
       {/* Book Cover */}
       <div
@@ -60,7 +73,15 @@ export default function BookCard({
           <div className="flex items-center justify-between">
             <p className="text-lg font-bold text-green-400">${price}</p>
             <div className="space-x-2">
-              <button className="redBtn">Buy</button>
+              <button
+                className="redBtn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleBuy();
+                }}
+              >
+                Buy
+              </button>
               <button className="yelloBtn">Add to Cart</button>
             </div>
           </div>
